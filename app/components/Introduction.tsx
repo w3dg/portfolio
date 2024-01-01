@@ -15,7 +15,7 @@ export const Introduction = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
-          className="text-green-100/40 text-base lg:text-lg"
+          className="text-green-100/40 text-base lg:text-lg pt-4 lg:pt-0"
         >
           Hi! Nice to meet you, I'm
         </motion.p>

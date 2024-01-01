@@ -4,8 +4,8 @@ import { sendMesssage } from "../actions/actions";
 const Message = () => {
   return (
     <main className="py-10 grid gap-4 place-items-center">
-      <h2 className="text-2xl lg:text-4xl text-center font-bold tracking-tighter">
-        Let's build something amazing together.
+      <h2 className="text-xl lg:text-3xl text-center px-3 font-bold tracking-tighter">
+        Let's build <span className="text-green-200">something amazing</span> together.
       </h2>
       <p className="text-sm lg:text-base">Shoot me a message on socials or below.</p>
       <div className="my-4 py-5 px-3 w-9/12 max-w-lg lg:text-lg">

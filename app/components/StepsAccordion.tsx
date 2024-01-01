@@ -41,52 +41,65 @@ const StepsInfo: Steps[] = [
   },
 ];
 
-export const StepsAccordion = () => {
-  const [steps, setSteps] = useState<Steps[]>(StepsInfo);
-  const [currentOpenId, setCurrentOpenId] = useState(0);
+// https://codesandbox.io/p/sandbox/framer-motion-accordion-qx958?file=%2Fsrc%2FExample.tsx%3A17%2C9 by mattgperry
 
-  // if the current open item is clicked, close it
-  // if other is clicked, expand that
-  // set all others to non-expanded
-
-  const handleClick = (id: number): void => {
-    setSteps(
-      // cant click in a row, ccurent open id keeps being set
-      steps.map((s) => {
-        if (s.id === id) {
-          if (s.id === currentOpenId) return { ...s, expanded: false };
-          else return { ...s, expanded: true };
-        } else {
-          return { ...s, expanded: false };
-        }
-      })
-    );
-    setCurrentOpenId(id);
-  };
+const Accordion = ({
+  i,
+  heading,
+  description,
+  expanded,
+  setExpanded,
+}: {
+  i: number;
+  expanded: any;
+  setExpanded: any;
+  heading: string;
+  description: string;
+}) => {
+  const isOpen = i === expanded;
 
   return (
-    <IconContext.Provider value={{ className: "text-neutral-500" }}>
-      <div className="w-10/12 mx-auto lg:w-full h-auto pb-6">
-        {steps.map((step) => {
-          return (
-            <div key={step.id}>
-              <button
-                className={
-                  "w-full flex items-center justify-between hover:cursor-pointer px-2 py-4 text-left" +
-                  (step.id !== 1 ? " border-t border-neutral-700/70" : "")
-                }
-                onClick={() => handleClick(step.id)}
-              >
-                <p>{step.heading}</p>
-                <IconContext.Provider value={{ className: step.expanded ? "text-green-300" : "" }}>
-                  {step.expanded ? <IoChevronUp></IoChevronUp> : <IoChevronDown></IoChevronDown>}
-                </IconContext.Provider>
-              </button>
-              {!step.expanded ? <></> : <p className="text-neutral-400 px-2 pt-3 pb-6">{step.description}</p>}
-            </div>
-          );
-        })}
-      </div>
-    </IconContext.Provider>
+    <div className="border-b border-neutral-50/10 py-2">
+      <button
+        className={"px-4 w-full py-2 cursor-pointer rounded-md " + (isOpen ? "bg-[#171717]" : "bg-transparent")}
+        onClick={() => setExpanded(isOpen ? false : i)}
+      >
+        <div className="flex justify-between items-center">
+          <div className="flex items-start gap-4 text-lg w-full">
+            <p className="text-green-200/50">0{i}.</p>
+            <p>{heading}</p>
+          </div>
+          <IconContext.Provider value={{ className: isOpen ? "text-green-300" : "" }}>
+            {isOpen ? <IoChevronUp /> : <IoChevronDown />}
+          </IconContext.Provider>
+        </div>
+      </button>
+      {isOpen && (
+        <p key="content" className="px-4 py-2 lg:px-16 text-neutral-400 text-sm lg:text-base">
+          {description}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export const StepsAccordion = () => {
+  const [expanded, setExpanded] = useState<false | number>(0);
+
+  return (
+    <div className="w-10/12 mx-auto lg:w-full h-auto pb-6">
+      {StepsInfo.map((step) => {
+        return (
+          <Accordion
+            key={step.id}
+            i={step.id}
+            heading={step.heading}
+            description={step.description}
+            expanded={expanded}
+            setExpanded={setExpanded}
+          ></Accordion>
+        );
+      })}
+    </div>
   );
 };
