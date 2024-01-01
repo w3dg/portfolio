@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import navLogo from "./navLogo.svg";
+import navLogo from "./navlogo.svg";
 
 export const Navbar = () => {
   return (
     <nav className="border-b border-neutral-800/70 w-full grid lg:grid-cols-[10vw_1fr_10vw] lg:px-52">
       <div className="hidden lg:flex items-center justify-center">
-        <Image src={navLogo} alt="Logo with letters DG. Initials for Debopam Gupta" height={64} width={64} />
+        <Image src={navLogo} alt="Logo with letters DG. Initials for Debopam Gupta" height={64} width={64} priority />
       </div>
       <ul className="flex gap-4 lg:gap-6 items-center justify-center w-full px-4 h-16">
         <li className="hover:underline hover:underline-offset-2 text-neutral-300 hover:text-green-300 transition-colors duration-150">
