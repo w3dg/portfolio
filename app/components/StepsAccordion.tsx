@@ -14,7 +14,7 @@ interface Steps {
 
 const StepsInfo: Steps[] = [
   {
-    heading: "Brainstorm and Wireframe",
+    heading: "Brainstorm & Design",
     description:
       "Ideate and define solution. Sketch interface layout and user flow. Design data interactions and architecture.",
     expanded: false,
@@ -65,7 +65,7 @@ const Accordion = ({
         onClick={() => setExpanded(isOpen ? false : i)}
       >
         <div className="flex justify-between items-center">
-          <div className="flex items-start gap-4 text-lg w-full">
+          <div className="flex items-start gap-4 text-base lg:text-lg w-full">
             <p className="text-green-200/50">0{i}.</p>
             <p>{heading}</p>
           </div>
