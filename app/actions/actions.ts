@@ -17,5 +17,15 @@ export async function sendMesssage(formData: FormData) {
 
   const { name, email, message } = FormSchema.parse(rawFormData);
 
-  // POST DATA
+  const data = { name, email, message };
+
+  // TODO:error handling
+  // Expecting no error.
+  await fetch(`${process.env.MESSAGE_POST_API_URL}/api/v1/submissions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 }
