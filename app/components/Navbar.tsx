@@ -24,10 +24,10 @@ export const Navbar = () => {
         </li>
       </ul>
       <Link
-        href={"#"}
+        href={"/message"}
         className="hidden lg:flex items-center justify-center underline underline-offset-2 text-green-200/40 hover:text-green-300"
       >
-        Share
+        Message
       </Link>
     </nav>
   );
