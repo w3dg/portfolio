@@ -1,7 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+
 import { AllLinks } from "./AllLinks";
+import selfImage from "../../public/self.jpeg";
 
 export const Introduction = () => {
   return (
@@ -10,6 +13,7 @@ export const Introduction = () => {
       className="h-[calc(100vh - 4rem)] grid gap-8 px-4 mt-6 grid-rows-2 lg:grid-rows-[20vh_1fr_1fr_20vh] lg:grid-cols-2 lg:px-52 lg:my-18"
       id="home"
     >
+      {" "}
       <article className="text-center grid gap-6 lg:row-start-2 lg:row-span-2 lg:col-start-1 lg:text-left">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +58,8 @@ export const Introduction = () => {
         className="lg:row-start-2 lg:row-span-2 lg:col-start-2 grid place-items-center w-full max-w-md mx-auto border-cyan-50/10 border-2 h-[30vh] p-4 rounded-2xl lg:h-auto lg:max-w-none lg:w-full relative after:absolute after:bottom-0 after:right-0 after:h-48 after:w-48 after:blur-3xl after:bg-gradient-to-br after:from-cyan-200/30 after:to-green-200/20 after:-z-10 motion-safe:after:animate-playAround"
       >
         <div className="h-24 w-24 rounded-full overflow-hidden lg:h-36 lg:w-36 outline outline-offset-2 outline-green-200">
-          <img src="self.jpeg" alt="Picture of Debopam Gupta standing in a field" />
+          {/* <img src="self.jpeg" alt="Picture of Debopam Gupta standing in a field" /> */}
+          <Image src={selfImage} alt="Picture of Debopam Gupta standing in a field" placeholder="blur" />
         </div>
         <p className="text-green-50/80 lg:text-lg">Full Stack Developer</p>
         <AllLinks />
