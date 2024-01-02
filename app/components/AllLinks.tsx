@@ -1,6 +1,7 @@
 "use client";
 
-import { FaDiscord } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa";
 import { IoLogoGithub, IoLogoLinkedin, IoMail, IoLogoInstagram, IoLogoTwitch, IoLogoTwitter } from "react-icons/io5";
 import { LuQuote, LuArrowUpRight } from "react-icons/lu";
 
@@ -14,7 +15,7 @@ export const AllLinks = ({ footer = false }) => {
   return (
     <IconContext.Provider
       value={{
-        size: "1.4rem",
+        size: "1.25rem",
         className:
           "text-neutral-300 hover:text-green-300 transition-colors transition-scale hover:scale-110 hover:cursor-pointer",
       }}
@@ -33,6 +34,11 @@ export const AllLinks = ({ footer = false }) => {
         <li key={"mail"}>
           <a href="mailto:w3dg@duck.com" target="_blank">
             <IoMail></IoMail>
+          </a>
+        </li>
+        <li key={"tg"}>
+          <a href="https://t.me/w3_dg" target="_blank">
+            <FaTelegramPlane></FaTelegramPlane>
           </a>
         </li>
         <li key={"ig"}>
