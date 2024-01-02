@@ -1,15 +1,46 @@
-import { IoSend } from "react-icons/io5";
-import { sendMesssage } from "../actions/actions";
+"use client";
+import { useState, useRef } from "react";
+import { IoMail, IoLogoLinkedin } from "react-icons/io5";
+import { FaTelegramPlane } from "react-icons/fa";
+
+import { IconContext } from "react-icons";
+
+import SubmitButton from "./SubmitButton";
+
+import { sendMesssage } from "@/app/actions/actions";
+import Link from "next/link";
 
 const Message = () => {
+  const [bannerMessage, setBannerMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
   return (
     <main className="py-10 grid gap-4 place-items-center">
       <h2 className="text-xl lg:text-3xl text-center px-3 font-bold tracking-tighter">
         Let's build <span className="text-green-200">something amazing</span> together.
       </h2>
       <p className="text-sm lg:text-base">Shoot me a message on socials or below.</p>
+      {bannerMessage != "" && (
+        <p className="p-4 border rounded-lg border-green-300/40  text-center text-sm">
+          {bannerMessage}
+          <br />
+          <Link href={"/"} className="hover:underline text-green-400">
+            Go to homepage
+          </Link>
+        </p>
+      )}
       <div className="my-4 py-5 px-3 w-9/12 max-w-lg lg:text-lg">
-        <form action={sendMesssage} className="grid gap-3" autoComplete="off">
+        <form
+          ref={formRef}
+          action={async (formData) => {
+            // wait for the action to finish then clear the form
+            await sendMesssage(formData);
+            formRef?.current?.reset();
+            setBannerMessage("Form submitted successfully");
+          }}
+          className="grid gap-3"
+          autoComplete="off"
+          id="message-form"
+        >
           <div className="grid">
             <label className="mb-1 ml-1 text-neutral-400" htmlFor="name">
               Name
@@ -50,17 +81,37 @@ const Message = () => {
               required
             ></textarea>
           </div>
-
-          <button
-            type="submit"
-            className=" w-full lg:w-1/2 mx-auto mt-5 rounded text-neutral-200 py-3 px-6 font-bold flex items-center justify-center gap-4 border-2 border-neutral-800 group bg-gradient-to-r from-transparent to-transparent hover:from-transparent hover:to-green-400/20 hover:border-2 hover:border-green-200/30 focus-visible:outline-green-500 hover:text-white transition-colors"
-          >
-            <span className="text-lg ">Send</span>
-            <div className="group-hover:-rotate-12 duration-200">
-              <IoSend></IoSend>
-            </div>
-          </button>
+          <SubmitButton></SubmitButton>
         </form>
+        <IconContext.Provider
+          value={{
+            size: "1.4rem",
+            className:
+              "text-neutral-500 group-hover:text-green-300 transition-colors transition-scale group-hover:scale-110 group-hover:cursor-pointer",
+          }}
+        >
+          <div className="text-sm my-6 text-center">
+            <p className="text-neutral-500 mb-5">Looking for other options?</p>
+            <div className="flex flex-col mt-2 gap-2 items-center text-neutral-500">
+              <Link className="flex group gap-2 hover:text-green-200" target="_blank" href={"mailto:w3dg@duck.com"}>
+                <IoMail></IoMail>
+                <span>w3dg@duck.com</span>
+              </Link>
+              <Link
+                className="flex gap-2 group hover:text-green-200"
+                target="_blank"
+                href={"https://dgsh.vercel.app/li"}
+              >
+                <IoLogoLinkedin></IoLogoLinkedin>
+                /in/debopamgupta
+              </Link>
+              <Link className="flex gap-2 group hover:text-green-200" target="_blank" href={"https://t.me/w3_dg"}>
+                <FaTelegramPlane></FaTelegramPlane>
+                @w3_dg
+              </Link>
+            </div>
+          </div>
+        </IconContext.Provider>
       </div>
     </main>
   );
