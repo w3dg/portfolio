@@ -7,7 +7,11 @@ import { Navbar } from "./components/Navbar";
 
 export const metadata: Metadata = {
   title: "Portfolio For Debopam Gupta",
-  description: "",
+  description: "Portfolio website.",
+  openGraph: {
+    description: "Portfolio website.",
+    images: "/og-image.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
