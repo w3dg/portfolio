@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { StepsAccordion } from "./StepsAccordion";
+import { ProcessAccordion } from "./ProcessAccordion";
 
 export const Process = () => {
   return (
     <motion.section
-      className="grid gap-8 px-8 my-8 py-8 lg:flex-1 lg:grid-cols-2 lg:px-52 lg:mt-24 lg:mb-32"
+      className="grid gap-8 px-8 my-8 py-8 lg:flex-1 lg:grid-cols-2 lg:px-52 lg:mt-40 lg:mb-32"
       id="process"
     >
       <motion.div
@@ -32,7 +32,7 @@ export const Process = () => {
         viewport={{ once: true }}
         transition={{ delay: 0.65 }}
       >
-        <StepsAccordion />
+        <ProcessAccordion />
       </motion.div>
     </motion.section>
   );
