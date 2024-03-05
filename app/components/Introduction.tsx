@@ -8,7 +8,7 @@ import selfImage from "../../public/self.jpeg";
 
 export const Introduction = () => {
   return (
-    <main className="flex flex-col h-[calc(100vh-4rem)] gap-0 mt-16 ">
+    <main className="flex flex-col h-[calc(100vh-4rem)] gap-0 mt-16 pt-8 lg:pt-0">
       <section
         className="grid gap-8 px-4 grid-rows-2 lg:grid-rows-[20vh_1fr_1fr_20vh] lg:grid-cols-2 lg:px-52 lg:mt-18"
         id="home"
