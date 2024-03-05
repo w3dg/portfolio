@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import navLogo from "./navlogo.svg";
+import NavLinks from "./NavLinks";
 
 export const Navbar = () => {
   return (
@@ -9,17 +10,7 @@ export const Navbar = () => {
       <div className="items-center justify-center hidden lg:flex">
         <Image src={navLogo} alt="Logo with letters DG. Initials for Debopam Gupta" height={64} width={64} priority />
       </div>
-      <ul className="flex items-center justify-center w-full h-16 gap-4 px-4 lg:gap-6">
-        <li className="transition-colors duration-150 hover:underline hover:underline-offset-2 text-neutral-300 hover:text-green-300">
-          <Link href={"/"}>Home</Link>
-        </li>
-        <li className="transition-colors duration-150 hover:underline hover:underline-offset-2 text-neutral-300 hover:text-green-300">
-          <Link href={"/projects"}>Projects</Link>
-        </li>
-        <li className="transition-colors duration-150 hover:underline hover:underline-offset-2 text-neutral-300 hover:text-green-300">
-          <Link href={"/message"}>Get in touch</Link>
-        </li>
-      </ul>
+      <NavLinks />
       <Link
         href={"/message"}
         className="items-center justify-center hidden underline lg:flex underline-offset-2 text-green-200/40 hover:text-green-300"

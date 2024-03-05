@@ -25,3 +25,9 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+### Credits
+
+[Page view transitions in Next 14](https://twitter.com/asidorenko_/status/1753855972089483567)
