@@ -4,6 +4,7 @@ import { inter, montserrat } from "./fonts/fonts";
 
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Portfolio For Debopam Gupta",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`bg-black text-neutral-200 overflow-x-hidden ${inter.className} antialiased`}>
         <Navbar></Navbar>
         {children}
+        <Footer></Footer>
       </body>
     </html>
   );
